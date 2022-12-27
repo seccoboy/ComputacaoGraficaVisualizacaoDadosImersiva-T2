@@ -6,7 +6,7 @@ using System.Globalization;
 public class ReadCSV : MonoBehaviour{
 
     public TextAsset csvFile; 
-	public CubeMover cubePrefab;
+	public GameObject cubePrefab;
 
 	public void Start(){
 		string[,] grid = SplitData(csvFile.text);
@@ -19,12 +19,10 @@ public class ReadCSV : MonoBehaviour{
 		int colSize = grid.GetLength(1);
 
 		for(int z = 1; z < colSize -1 ; z++){
-
 			float xCoord = float.Parse(grid[2,z]);
 			float yCoord = float.Parse(grid[3,z]);
 			float zCoord = float.Parse(grid[4,z]);
-        	CubeMover cube = GameObject.Instantiate(cubePrefab, new Vector3(xCoord,yCoord,zCoord),transform.rotation  );
-
+        	GameObject cube = GameObject.Instantiate(cubePrefab, new Vector3(xCoord/5,yCoord/5,zCoord/5),transform.rotation  );
 		}
 	}
 	

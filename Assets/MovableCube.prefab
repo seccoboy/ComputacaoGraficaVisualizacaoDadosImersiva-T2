@@ -11,8 +11,6 @@ GameObject:
   - component: {fileID: 40214311402309402}
   - component: {fileID: 40214311402309401}
   - component: {fileID: 40214311402309400}
-  - component: {fileID: 40214311402309399}
-  - component: {fileID: 40214311402309398}
   m_Layer: 0
   m_Name: MovableCube
   m_TagString: Untagged
@@ -65,7 +63,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 510ca6baa850a46809aa1b694275a47d, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -87,32 +85,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &40214311402309399
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 40214311402309397}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &40214311402309398
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 40214311402309397}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dd55249aeb6f84482938e66413a23cca, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  multiplier: 3
 --- !u!1 &40214311614873995
 GameObject:
   m_ObjectHideFlags: 0
@@ -224,6 +196,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   multiplier: 3
+  text: {fileID: 0}
 --- !u!1 &40214312484685276
 GameObject:
   m_ObjectHideFlags: 0
