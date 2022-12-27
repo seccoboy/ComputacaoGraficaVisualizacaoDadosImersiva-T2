@@ -1,18 +1,32 @@
 using System.Collections;
 using UnityEngine;
 using System.Linq; 
-using System.Globalization;
+using System.Collections.Generic;
 
 public class ReadCSV : MonoBehaviour{
 
+	public float spread;
     public TextAsset csvFile; 
 	public GameObject cubePrefab;
+
+	private List<GameObject> cubes = new List<GameObject>();
+
+
+	public void UpdateCubes(){
+
+		foreach(var cube in cubes) {
+			DestroyImmediate(cube);
+        }
+		Start();
+	}
+		
 
 	public void Start(){
 		string[,] grid = SplitData(csvFile.text);
 		PlaceCubes(grid);
 	}
 	
+
 	public void PlaceCubes(string[,] grid){
 
 		int linSize = grid.GetLength(0);
@@ -22,7 +36,7 @@ public class ReadCSV : MonoBehaviour{
 			float xCoord = float.Parse(grid[2,z]);
 			float yCoord = float.Parse(grid[3,z]);
 			float zCoord = float.Parse(grid[4,z]);
-        	GameObject cube = GameObject.Instantiate(cubePrefab, new Vector3(xCoord/5,yCoord/5,zCoord/5),transform.rotation  );
+        	cubes.Add(Instantiate(cubePrefab = GameObject.Instantiate(cubePrefab, new Vector3(xCoord/spread,yCoord/spread,zCoord/spread),transform.rotation  )));
 		}
 	}
 	
