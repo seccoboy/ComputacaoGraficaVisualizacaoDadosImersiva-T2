@@ -36,6 +36,7 @@
     <ImplicitlyExpandDesignTimeFacades>false</ImplicitlyExpandDesignTimeFacades>
   </PropertyGroup>
   <ItemGroup>
+     <Compile Include="Assets\CamControl.cs" />
      <Compile Include="Assets\CubePlotter.cs" />
      <Compile Include="Assets\CubeMover.cs" />
      <Compile Include="Assets\ReadCSV.cs" />
