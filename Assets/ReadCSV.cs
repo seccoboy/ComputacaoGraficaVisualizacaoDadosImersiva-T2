@@ -9,6 +9,10 @@ public class ReadCSV : MonoBehaviour{
     public TextAsset csvFile; 
 	public GameObject cubePrefab;
 
+	public int eixo1;
+	public int eixo2;
+	public int eixo3;
+
 	private List<GameObject> cubes = new List<GameObject>();
 
 
@@ -33,9 +37,9 @@ public class ReadCSV : MonoBehaviour{
 		int colSize = grid.GetLength(1);
 
 		for(int z = 1; z < colSize -1 ; z++){
-			float xCoord = float.Parse(grid[2,z]);
-			float yCoord = float.Parse(grid[3,z]);
-			float zCoord = float.Parse(grid[4,z]);
+			float xCoord = float.Parse(grid[eixo1,z]);
+			float yCoord = float.Parse(grid[eixo3,z]);
+			float zCoord = float.Parse(grid[eixo2,z]);
         	cubes.Add(Instantiate(cubePrefab = GameObject.Instantiate(cubePrefab, new Vector3(xCoord/spread,yCoord/spread,zCoord/spread),transform.rotation  )));
 		}
 	}
