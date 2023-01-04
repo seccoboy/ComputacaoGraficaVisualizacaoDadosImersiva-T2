@@ -12,6 +12,9 @@ public class CamControl : MonoBehaviour
     private float totalRun= 1.0f;
      
     void Update () {
+        if (!Application.isFocused) {
+            return;
+        }
         lastMouse = Input.mousePosition - lastMouse ;
         lastMouse = new Vector3(-lastMouse.y * camSens, lastMouse.x * camSens, 0 );
         lastMouse = new Vector3(transform.eulerAngles.x + lastMouse.x , transform.eulerAngles.y + lastMouse.y, 0);
