@@ -2,6 +2,7 @@ using System.Collections;
 using UnityEngine;
 using System.Linq; 
 using System.Collections.Generic;
+using UnityEngine.UI;
 
 public class ReadCSV : MonoBehaviour{
 
@@ -14,7 +15,6 @@ public class ReadCSV : MonoBehaviour{
 	public int eixo3;
 
 	private List<GameObject> cubes = new List<GameObject>();
-
 
 	public void UpdateCubes(){
 
@@ -37,10 +37,23 @@ public class ReadCSV : MonoBehaviour{
 		int colSize = grid.GetLength(1);
 
 		for(int z = 1; z < colSize -1 ; z++){
+
 			float xCoord = float.Parse(grid[eixo1,z]);
 			float yCoord = float.Parse(grid[eixo3,z]);
 			float zCoord = float.Parse(grid[eixo2,z]);
         	cubes.Add(Instantiate(cubePrefab = GameObject.Instantiate(cubePrefab, new Vector3(xCoord/spread,yCoord/spread,zCoord/spread),transform.rotation  )));
+			
+			string textoDocubo = grid[eixo1,0] + ':' + grid[eixo1,z] + '\n' + grid[eixo2,0] + ':' + grid[eixo2,z] + '\n' + grid[eixo3,0] + ':' + grid[eixo3,z] ;
+
+			GameObject textObject = new GameObject("Text");
+			textObject.AddComponent<TextMesh>();
+			textObject.GetComponent<TextMesh>().text = textoDocubo;
+			textObject.transform.SetParent(cubes[cubes.Count-1].transform);
+			textObject.transform.position = new Vector3(
+				cubes[cubes.Count-1].transform.position.x - 2.0f,
+				cubes[cubes.Count-1].transform.position.y + 5.0f,
+				cubes[cubes.Count-1].transform.position.z
+			);
 		}
 	}
 	
