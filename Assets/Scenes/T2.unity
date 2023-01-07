@@ -343,11 +343,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 036dd5cbe1c456c41ba87e2b4ad78ac4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spread: 5
+  spread: 3
   csvFile: {fileID: 4900000, guid: d013cdd65c211834bb7bb2ba03cec5a4, type: 3}
   cubePrefab: {fileID: 40214311402309397, guid: b1ce85f70b797448d9486c198cfa04ad, type: 3}
-  eixo1: 4
-  eixo2: 6
+  eixo1: 9
+  eixo2: 3
   eixo3: 7
 --- !u!4 &1477162779
 Transform:
