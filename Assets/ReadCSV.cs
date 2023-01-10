@@ -9,26 +9,56 @@ public class ReadCSV : MonoBehaviour{
 	public float spread;
     public TextAsset csvFile; 
 	public GameObject cubePrefab;
-	public int eixo1, eixo2, eixo3;
-	public List<GameObject> cubes = new List<GameObject>();
+	private List<GameObject> cubes = new List<GameObject>();
 	private List<TextMesh> textMeshes = new List<TextMesh>();
+	public int eixo1, eixo2, eixo3;
+	int tempEixo1;
+	int tempEixo2;
+	int tempEixo3;
+
 
 	public void Start(){
+		tempEixo1 = eixo1;
+    	tempEixo2 = eixo2;
+    	tempEixo3 = eixo3;
 		string[,] grid = SplitData(csvFile.text);
 		PlaceCubes(grid);
 	}
 
 	public void Update(){
+		string[,] grid = SplitData(csvFile.text);
+		ValidateEixos(grid);
+
+		if (tempEixo1 != eixo1 || tempEixo2 != eixo2 || tempEixo3 != eixo3) {
+        	tempEixo1 = eixo1;
+        	tempEixo2 = eixo2;
+        	tempEixo3 = eixo3;
+			
+        	PlaceCubes(grid);
+    	}
 		foreach (TextMesh textMesh in textMeshes) {
-			RotateTexts(textMesh.gameObject);
+		    if(textMesh != null){
+    	   	 	RotateTexts(textMesh.gameObject);
+    		}
 		}
 	}	
+
+	void ValidateEixos(string[,] grid) {
+		int numColunas = grid.GetLength(1);
+		eixo1 = Mathf.Clamp(eixo1, 0, numColunas - 1);
+		eixo2 = Mathf.Clamp(eixo2, 0, numColunas - 1);
+		eixo3 = Mathf.Clamp(eixo3, 0, numColunas - 1);
+	}
 
 	public void PlaceCubes(string[,] grid){
 	
 		foreach(var cube in cubes) {
 			DestroyImmediate(cube);
 		}
+		foreach(var text in textMeshes) {
+			DestroyImmediate(text);
+		}
+
 
 		int linSize = grid.GetLength(0);
 		int colSize = grid.GetLength(1);
