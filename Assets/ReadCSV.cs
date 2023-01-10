@@ -15,18 +15,17 @@ public class ReadCSV : MonoBehaviour{
 	int tempEixo1;
 	int tempEixo2;
 	int tempEixo3;
-
+	string[,] grid;
 
 	public void Start(){
 		tempEixo1 = eixo1;
     	tempEixo2 = eixo2;
     	tempEixo3 = eixo3;
-		string[,] grid = SplitData(csvFile.text);
+		grid = SplitData(csvFile.text);
 		PlaceCubes(grid);
 	}
 
 	public void Update(){
-		string[,] grid = SplitData(csvFile.text);
 		ValidateEixos(grid);
 
 		if (tempEixo1 != eixo1 || tempEixo2 != eixo2 || tempEixo3 != eixo3) {
