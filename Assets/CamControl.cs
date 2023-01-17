@@ -7,23 +7,22 @@ public class CamControl : MonoBehaviour
     float mainSpeed = 100.0f; 
     float shiftAdd = 250.0f; 
     float maxShift = 1000.0f; 
-    float camSens = 0.25f; 
+    float camSens = 0.10f; 
     private Vector3 lastMouse = new Vector3(255, 255, 255); 
     private float totalRun= 1.0f;
      
     void Update () {
-        if (!Application.isFocused) {
-            return;
+         if (Input.GetMouseButton(1)) {
+            lastMouse = Input.mousePosition - lastMouse ;
+            lastMouse = new Vector3(-lastMouse.y * camSens, lastMouse.x * camSens, 0 );
+            lastMouse = new Vector3(transform.eulerAngles.x + lastMouse.x , transform.eulerAngles.y + lastMouse.y, 0);
+            transform.eulerAngles = lastMouse;
         }
-        lastMouse = Input.mousePosition - lastMouse ;
-        lastMouse = new Vector3(-lastMouse.y * camSens, lastMouse.x * camSens, 0 );
-        lastMouse = new Vector3(transform.eulerAngles.x + lastMouse.x , transform.eulerAngles.y + lastMouse.y, 0);
-        transform.eulerAngles = lastMouse;
         lastMouse =  Input.mousePosition;
-        
+       
+
         Vector3 p = GetBaseInput();
-        if (p.sqrMagnitude > 0)
-        { 
+        if (p.sqrMagnitude > 0){ 
           if (Input.GetKey (KeyCode.LeftShift)){
               totalRun += Time.deltaTime;
               p  = p * totalRun * shiftAdd;
@@ -37,8 +36,7 @@ public class CamControl : MonoBehaviour
          
           p = p * Time.deltaTime;
           Vector3 newPosition = transform.position;
-          if (Input.GetKey(KeyCode.Space))
-          { 
+          if (Input.GetKey(KeyCode.Space)){
               transform.Translate(p);
               newPosition.x = transform.position.x;
               newPosition.z = transform.position.z;
@@ -49,8 +47,7 @@ public class CamControl : MonoBehaviour
         }
     }
      
-    private Vector3 GetBaseInput() 
-    {
+    private Vector3 GetBaseInput() {
         Vector3 p_Velocity = new Vector3();
         if (Input.GetKey (KeyCode.W)){
             p_Velocity += new Vector3(0, 0 , 1);
