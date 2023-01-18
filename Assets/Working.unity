@@ -252,9 +252,10 @@ MonoBehaviour:
   spread: 3
   csvFile: {fileID: 4900000, guid: 83a9a0b20400be84184e1aa6e6bdec90, type: 3}
   cubePrefab: {fileID: 40214311402309397, guid: 9cca2664b3e61d74080d7a04ad6a0a57, type: 3}
-  eixo1: 1
-  eixo2: 2
-  eixo3: 3
+  axisPrefab: {fileID: 4228450944175466323, guid: da4cffd08df1ea94ab69c7c0c13d5904, type: 3}
+  eixo1: 12
+  eixo2: 10
+  eixo3: 8
 --- !u!4 &1593533432
 Transform:
   m_ObjectHideFlags: 0
